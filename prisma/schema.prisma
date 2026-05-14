@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output = "../src/lib/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Song {
+  id              String   @id @default(cuid())
+  title           String
+  artist          String?  @default("Autoral")
+  content         String   @db.Text
+  language        String   @default("pt-BR")
+  key             String
+  
+  // // Relacionamento Bilíngue (Auto-relacionamento)
+  // originalSongId  String?
+  // originalSong    Song?    @relation("SongTranslations", fields: [originalSongId], references: [id])
+  // translations    Song[]   @relation("SongTranslations")
+
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+
+  @@index([title, artist]) // Melhora a velocidade da busca
+  @@map("song")
+}
