@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+<img src=".github/assets/open_chords.png" alt="Open chords logo" width=300 />
+</p>
+
+This is a chord book open source, that you can bring your own chords and playing without any interruptions/ads.
+
+All the chords should be using [ChordPro standard](https://songbook-pro.com/docs/manual/chordpro/) as text type
 
 ## Getting Started
 
