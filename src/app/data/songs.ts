@@ -2,11 +2,12 @@ import { Song } from "@/types/songs";
 
 export const songs: Song[] = [
     {
-      slug: "ao-orarmos-senhor",
+      id: "ao-orarmos-senhor",
       title: "Ao Orarmos, Senhor",
       artist: "Corinhos Evangélicos",
       key: "D",
-      chordPro: `{title: Ao Orarmos, Senhor}
+      language: "pt",
+      content: `{title: Ao Orarmos, Senhor}
   {artist: Corinhos Evangélicos}
   {key: D}
   
@@ -24,11 +25,12 @@ export const songs: Song[] = [
   `,
     },
     {
-      slug: "amazing-grace",
+      id: "amazing-grace",
       title: "Amazing Grace",
       artist: "John Newton",
       key: "G",
-      chordPro: `{title: Amazing Grace}
+      language: "en",
+      content: `{title: Amazing Grace}
   {artist: John Newton}
   {key: G}
   
@@ -40,4 +42,4 @@ export const songs: Song[] = [
     },
   ];
 
-  export const getSong = (slug: string) => songs.find((s) => s.slug === slug);
+  export const getSong = (id: string) => songs.find((s) => s.id === id);
