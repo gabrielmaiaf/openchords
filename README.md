@@ -1,6 +1,8 @@
 <p align="center">
-<img src=".github/assets/open_chords.png" alt="Open chords logo" width=300 />
+<img src=".github/assets/open_chords.svg" alt="Open chords logo" width=300 />
 </p>
+
+# Open Chords
 
 This is a chord book open source, that you can bring your own chords and playing without any interruptions/ads.
 
