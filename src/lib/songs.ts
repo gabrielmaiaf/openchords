@@ -1,7 +1,9 @@
 import prisma from './prisma';
 
 export async function getAllSongs() {
-  return await prisma.song.findMany();
+  return await prisma.song.findMany({
+    orderBy: { title: 'asc' }
+  });
 }
 
 export async function getSong(uuid: string) {

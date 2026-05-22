@@ -1,12 +1,12 @@
 export const dynamic = 'force-dynamic';
 
-import prisma from '@/lib/prisma';
+import { getAllSongs } from '@/lib/songs';
 import Link from 'next/link'
 import SongList from '../components/songList';
 import { Song } from '@/types/songs';
 
 export default async function SongsList() {
-  const songs: Song[] = await prisma.song.findMany()
+  const songs: Song[] = await getAllSongs()
   
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">

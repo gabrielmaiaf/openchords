@@ -7,7 +7,16 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <div className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6 py-20">
         <div className="relative">
-          <Image src={Logo} alt="Open chords logo" height={250} width={500} className="absolute z-1 top-0 -left-55 opacity-33" />
+          <div className="absolute inset-0 lg:-left-88 left-0 w-full h-full">
+            <Image
+              src={Logo}
+              alt="Open chords logo"
+              className="z-1 top-0 opacity-33 lg:object-contain object-cover h-full" 
+              preload={false}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              unoptimized
+            />
+          </div>
           <div className="relative z-1">
             <h1 className="text-2xl font-sans font-bold tracking-tight text-muted-foreground text-open-chord-logo">
               Open chords
