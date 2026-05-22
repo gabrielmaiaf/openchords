@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 
-import { ChordViewer } from "@/components/chordViewer";
+import { ChordViewer } from "@/app/components/chordViewer";
 import Link from 'next/link';
 import { getSong } from "@/lib/songs";
 

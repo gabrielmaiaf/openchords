@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useMemo, useState } from "react";
 import ChordSheetJS from "chordsheetjs";
+import Button from "./button";
 const { ChordProParser, HtmlDivFormatter } = ChordSheetJS;
 type Song = InstanceType<typeof ChordSheetJS.Song>;
 
@@ -44,21 +45,21 @@ export function ChordViewer({ chordPro, songKey = "C" }: Props) {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center gap-2 rounded-xl border border-border bg-card p-3">
         <div className="flex items-center gap-1">
-          <button
+          <Button
             onClick={() => setTranspose((t) => t - 1)}
-            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-accent"
+            disabled={transpose <= -11}
           >
-            ♭ Transpose
-          </button>
-          <span className="min-w-12 text-center text-sm font-mono">
+            ♭
+          </Button>
+          <span className="min-w-8 text-center text-sm font-mono">
             {transpose > 0 ? `+${transpose}` : transpose}
           </span>
-          <button
+          <Button
             onClick={() => setTranspose((t) => t + 1)}
-            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-accent"
+            disabled={transpose >= 11}
           >
-            ♯ Transpose
-          </button>
+            ♯
+          </Button>
           <button
             onClick={() => setTranspose(0)}
             className="ml-1 rounded-md px-2 py-1.5 text-xs text-muted-foreground hover:text-foreground"
@@ -67,48 +68,46 @@ export function ChordViewer({ chordPro, songKey = "C" }: Props) {
           </button>
         </div>
 
-        <div className="mx-2 h-6 w-px bg-border" />
+        <div className="mx-1 h-6 w-px bg-border" />
 
         <div className="flex items-center gap-1">
-          <button
+          <Button
             onClick={() => setFontSize((s) => Math.max(12, s - 2))}
-            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-accent"
+            disabled={fontSize <= 12}
           >
             A−
-          </button>
-          <span className="min-w-10 text-center text-sm font-mono">{fontSize}px</span>
-          <button
+          </Button>
+          <span className="min-w-8 text-center text-sm font-mono">{fontSize}px</span>
+          <Button
             onClick={() => setFontSize((s) => Math.min(32, s + 2))}
-            className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-accent"
+            disabled={fontSize >= 32}
           >
             A+
-          </button>
+          </Button>
         </div>
 
-        <div className="mx-2 h-6 w-px bg-border" />
+        <div className="mx-1 h-6 w-px bg-border" />
 
-        <button
+        <Button
           onClick={() => setUseFlats((v) => !v)}
-          className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-accent"
         >
           {useFlats ? "Use ♯ sharps" : "Use ♭ flats"}
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setUppercase((v) => !v)}
-          className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-accent"
         >
           {uppercase ? "lowercase lyrics" : "UPPERCASE LYRICS"}
-        </button>
+        </Button>
 
-        <div className="mx-2 h-6 w-px bg-border" />
+        <div className="mx-1 h-6 w-px bg-border" />
 
-        <button
+        <Button
           onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
           className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-accent"
           aria-label="Toggle theme"
         >
           {theme === "dark" ? "☀ Light" : "☾ Dark"}
-        </button>
+        </Button>
       </div>
 
       <div
