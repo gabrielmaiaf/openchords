@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Open Chords",
-  description: "Your open source chord book, play it your way.",
+  description: "Your open source chord book, play it your own way.",
   keywords: ['chord book', 'digital songbook', 'guitar chords', 'ChordPro viewer', 'open source sheet music', 'music tabs app'],
   authors: [{ name: 'gabrielmaiaf' }],
   creator: 'Gabriel Maia Francisco',
   openGraph: {
     title: "Open Chords",
-    description: "Your open source chord book, play it your way.",
+    description: "Your open source chord book, play it your own way.",
     url: "https://open-chords.vercel.app",
     siteName: "Open Chords",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: "https://open-chords.vercel.app/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Open Chords - Your open source chord book, play it your way.",
+        alt: "Open Chords - Your open source chord book, play it your own way.",
       },
     ],
     locale: "en-US",
@@ -38,13 +38,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Open Chords",
-    description: "Your open source chord book, play it your way.",
+    description: "Your open source chord book, play it your own way.",
     images: [
       {
         url: "https://open-chords.vercel.app/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Open Chords - Your open source chord book, play it your way.",
+        alt: "Open Chords - Your open source chord book, play it your own way.",
       },
     ],
   },

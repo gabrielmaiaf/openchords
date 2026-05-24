@@ -25,7 +25,7 @@ export default function Home() {
               Your open source chord book
             </h2>
             <h3 className="mt-4 text-6xl font-bold tracking-tight">
-              Play it your way.
+              Play it your own way.
             </h3>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
               Browse chord sheets, transpose on the fly, switch between sharps and flats,
