@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, SubmitEvent } from "react";
 import Link from 'next/link';
 import { ChordProEditor } from "../chordProEditor";
 import { redirect } from "next/navigation";
 import { Song } from '@/types/songs';
+import Button from "@/app/components/button";
 
 type Props = {
   initial?: Song;
@@ -20,36 +21,36 @@ export function SongForm({ initial, mode }: Props) {
   const [title, setTitle] = useState(initial?.title ?? "");
   const [artist, setArtist] = useState(initial?.artist ?? "");
   const [key, setKey] = useState(initial?.key ?? "C");
-  const [slug, setSlug] = useState(initial?.slug ?? "");
+//   const [slug, setSlug] = useState(initial?.id ?? "");
   const [chordPro, setChordPro] = useState(initial?.content ?? blankChordPro);
   const [error, setError] = useState<string | null>(null);
 
-  const computedSlug = slug.trim() || slugify(title);
+//   const computedSlug = slug.trim() || slugify(title);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     setError(null);
     if (!title.trim()) return setError("Title is required");
-    if (!computedSlug) return setError("Slug could not be generated");
+    // if (!computedSlug) return setError("Slug could not be generated");
 
-    if (mode === "create" && songsStore.get(computedSlug)) {
-      return setError("A song with this slug already exists");
-    }
+    // if (mode === "create" && songsStore.get(computedSlug)) {
+    //   return setError("A song with this slug already exists");
+    // }
 
-    songsStore.upsert({
-      slug: computedSlug,
-      title: title.trim(),
-      artist: artist.trim(),
-      key: key.trim() || "C",
-      chordPro,
-    });
+    // songsStore.upsert({
+    //   slug: computedSlug,
+    //   title: title.trim(),
+    //   artist: artist.trim(),
+    //   key: key.trim() || "C",
+    //   chordPro,
+    // });
     // redirect("/songs/$slug", params: { slug: computedSlug } });
   };
 
   const onDelete = () => {
     if (!initial) return;
     if (!confirm(`Delete "${initial.title}"?`)) return;
-    songsStore.remove(initial.slug);
+    // songsStore.remove(initial.slug);
     redirect("/admin");
   };
 
@@ -57,32 +58,32 @@ export function SongForm({ initial, mode }: Props) {
     <form onSubmit={onSubmit} className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="title">Title</Label>
-          <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+          <label htmlFor="title">Title</label>
+          <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="artist">Artist</Label>
-          <Input id="artist" value={artist} onChange={(e) => setArtist(e.target.value)} />
+          <label htmlFor="artist">Artist</label>
+          <input id="artist" value={artist} onChange={(e) => setArtist(e.target.value)} />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="key">Key</Label>
-          <Input id="key" value={key} onChange={(e) => setKey(e.target.value)} placeholder="C" />
+          <label htmlFor="key">Key</label>
+          <input id="key" value={key} onChange={(e) => setKey(e.target.value)} placeholder="C" />
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="slug">Slug</Label>
-          <Input
+        {/* <div className="space-y-2">
+          <label htmlFor="slug">Slug</label>
+          <input
             id="slug"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
             placeholder={slugify(title) || "auto-from-title"}
             disabled={mode === "edit"}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label>ChordPro source</Label>
+          <label>ChordPro source</label>
           <a
             href="https://www.chordpro.org/chordpro/chordpro-introduction/"
             target="_blank"
@@ -103,7 +104,7 @@ export function SongForm({ initial, mode }: Props) {
         </Link>
         <div className="flex items-center gap-2">
           {mode === "edit" && (
-            <Button type="button" variant="destructive" onClick={onDelete}>
+            <Button type="button" onClick={onDelete}>
               Delete
             </Button>
           )}
