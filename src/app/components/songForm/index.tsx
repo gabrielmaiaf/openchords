@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ChordProEditor } from "../chordProEditor";
 import { redirect } from "next/navigation";
 import { Song } from '@/types/songs';
-import Button from "@/app/components/button";
+import Button from "@/app/components/ui/button";
 
 type Props = {
   initial?: Song;

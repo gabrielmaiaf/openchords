@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { login, signup } from "./actions";
+import Button from "../components/ui/button";
+import Label from "../components/ui/label";
+import Input from "../components/ui/input";
 
 export default function LoginPage() {
   return (
@@ -16,21 +19,21 @@ export default function LoginPage() {
       </p>
 
       <form className="mt-8 space-y-4">
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input id="email" name="email" type="email" required />
+        <div className="space-y-2">
+          <Label htmlFor="email">Email:</Label>
+          <Input id="email" name="email" type="email" required />
         </div>
         <div className="space-y-2">
-          <label htmlFor="password">Password:</label>
-          <input id="password" name="password" type="password" required />
+          <Label htmlFor="password">Password:</Label>
+          <Input id="password" name="password" type="password" required />
         </div>
-        <button formAction={login}>Log in</button>
-        <button formAction={signup}>Sign up</button>
+        <Button formAction={login}>Log in</Button>
+        <Button formAction={signup}>Sign up</Button>
       </form>
-      <p className="mt-6 text-sm text-muted-foreground">
-        No account?{" "}
+      {/* <p className="mt-6 text-sm text-muted-foreground">
+        No account?{" "} */}
         {/* <Link href="/signup" className="text-primary underline">Create one</Link> */}
-      </p>
+      {/* </p> */}
     </div>
   );
 }

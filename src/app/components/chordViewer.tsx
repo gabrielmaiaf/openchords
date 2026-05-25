@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useMemo, useState } from "react";
 import ChordSheetJS from "chordsheetjs";
-import Button from "./button";
+import Button from "./ui/button";
 const { ChordProParser, HtmlDivFormatter } = ChordSheetJS;
 type Song = InstanceType<typeof ChordSheetJS.Song>;
 
