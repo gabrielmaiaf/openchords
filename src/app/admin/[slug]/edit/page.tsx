@@ -1,20 +1,10 @@
-import { useState, useEffect } from "react";
 import { SongForm } from "@/app/components/songForm";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { getSong } from "@/lib/songs";
 
-export default function EditSongPage() {
-  const { slug } = useParams();
-  const [song, setSong] = useState<Awaited<ReturnType<typeof getSong>> | null>(null);
-
-  useEffect(() => {
-    const fetchSong = async () => {
-      const fetchedSong = await getSong(slug as string);
-      setSong(fetchedSong);
-    };
-    fetchSong();
-  }, [slug]);
+export default async function EditSongPage({params}: { params: { slug: string } }) {
+  const { slug } = await params;
+  const song = await getSong(slug);
 
   if (song === null) {
     return (

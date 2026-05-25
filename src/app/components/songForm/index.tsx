@@ -1,3 +1,5 @@
+
+"use client"
 import { useState, SubmitEvent } from "react";
 import Link from 'next/link';
 import { ChordProEditor } from "../chordProEditor";
