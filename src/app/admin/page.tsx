@@ -12,7 +12,7 @@ export default async function AdminDashboard() {
     const songs: Song[] = await getAllSongs()
 
     if (error || !user) {
-        redirect("/login");
+      redirect("/login");
     }
   
     return (
@@ -30,13 +30,10 @@ export default async function AdminDashboard() {
           <div>
             <h1 className="text-4xl font-bold tracking-tight">Admin</h1>
             <p className="mt-1 text-muted-foreground">
-              {songs.length} song{songs.length === 1 ? "" : "s"} stored locally in this browser.
+              {songs.length} song{songs.length === 1 ? "" : "s"} in your DB.
             </p>
           </div>
           <div className="flex gap-2">
-            {/* <Button  onClick={() => { if (confirm("Reset to seed songs?")) songsStore.reset(); }}>
-              Reset
-            </Button> */}
             <Link
               href="/admin/new"
               className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"

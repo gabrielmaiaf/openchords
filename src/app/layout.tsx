@@ -68,8 +68,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Analytics />
-        <SpeedInsights />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
