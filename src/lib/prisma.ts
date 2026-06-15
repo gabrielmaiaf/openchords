@@ -2,7 +2,7 @@ import { PrismaClient } from "./generated/client/client";
 import { PrismaPg } from '@prisma/adapter-pg';
 import pg from 'pg';
 
-const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL })
+const pool = new pg.Pool({ connectionString: process.env.openchord_db_DATABASE_URL })
 const adapter = new PrismaPg(pool)
   
 const prismaClientSingleton = () => {
