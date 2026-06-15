@@ -1,26 +1,26 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+// import { redirect } from "next/navigation";
+// import { createClient } from "@/lib/supabase/server";
 // import Button from "@/app/components/button";
 import { Song } from '@/types/songs';
 import { getAllSongs } from '@/lib/songs';
 
 export default async function AdminDashboard() {
-    const supabase = await createClient();
-    const { data: { user }, error } = await supabase.auth.getUser();
+    // const supabase = await createClient();
+    // const { data: { user }, error } = await supabase.auth.getUser();
 
     const songs: Song[] = await getAllSongs()
 
-    if (error || !user) {
-      redirect("/login");
-    }
+    // if (error || !user) {
+    //   redirect("/login");
+    // }
   
     return (
       <div className="mx-auto max-w-4xl px-6 py-12">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">← Home</Link>
           <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            <span className="hidden sm:inline">{user.email}</span>
+            {/* <span className="hidden sm:inline">{user.email}</span> */}
             {/* <button onClick={() => signOut()} className="hover:text-foreground underline">Sign out</button> */}
             <Link href="/songs" className="hover:text-foreground">View public library →</Link>
           </div>
