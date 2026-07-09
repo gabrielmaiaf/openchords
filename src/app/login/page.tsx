@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { login, signup } from "./actions";
+import { login } from "../actions/login";
 import Button from "../components/ui/button";
 import Label from "../components/ui/label";
 import Input from "../components/ui/input";
@@ -28,12 +28,11 @@ export default function LoginPage() {
           <Input id="password" name="password" type="password" required />
         </div>
         <Button formAction={login}>Log in</Button>
-        <Button formAction={signup}>Sign up</Button>
       </form>
-      {/* <p className="mt-6 text-sm text-muted-foreground">
-        No account?{" "} */}
-        {/* <Link href="/signup" className="text-primary underline">Create one</Link> */}
-      {/* </p> */}
+      <p className="mt-6 text-sm text-muted-foreground">
+        No account?{" "}
+        <Link href="/signup" className="text-primary underline">Create one</Link>
+      </p>
     </div>
   );
 }
