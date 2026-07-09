@@ -2,18 +2,30 @@ import Link from "next/link";
 import { Song } from '@/types/songs';
 import { getAllSongs } from '@/lib/songs';
 import AdminHeader from "@/app/components/adminHeader";
+import { headers } from "next/headers";
+import { authServer } from "@/lib/auth/server";
+import { redirect } from "next/navigation";
 
 export default async function AdminDashboard() {
+  const reqHeaders = await headers();
 
-    const songs: Song[] = await getAllSongs()
+  const session = await authServer.getSession({
+    fetchOptions: {
+      headers: reqHeaders,
+    },
+  });
 
+  if (!session || !session.data?.user) {
+    redirect("/login");
+  }
 
+  const songs: Song[] = await getAllSongs()
   
     return (
       <div className="mx-auto max-w-4xl px-6 py-12">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">← Home</Link>
-          <AdminHeader />
+          <AdminHeader user={session.data.user} />
         </div>
   
         <header className="mt-4 flex flex-wrap items-end justify-between gap-4">
@@ -24,12 +36,12 @@ export default async function AdminDashboard() {
             </p>
           </div>
           <div className="flex gap-2">
-            <Link
+            {session?.data?.user.role === 'admin' && <Link
               href="/admin/new"
               className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
             >
               + New song
-            </Link>
+            </Link>}
           </div>
         </header>
   
@@ -56,12 +68,13 @@ export default async function AdminDashboard() {
                     >
                       View
                     </Link>
-                    <Link
+                    {session?.data?.user.role === 'admin' && <Link
                       href={`/admin/${s.id}/edit`}
                       className="rounded-md border border-border px-3 py-1.5 text-sm hover:bg-accent"
                     >
                       Edit
                     </Link>
+                    }
                   </div>
                 </li>
               ))}

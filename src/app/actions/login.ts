@@ -11,7 +11,6 @@ export async function login(formData: FormData) {
     password: formData.get('password') as string,
   }
 
-  console.log('Login data:', data)
   const { error } = await authServer.signIn.email(data);
 
   if (error) {
