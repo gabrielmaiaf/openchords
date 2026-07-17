@@ -3,6 +3,9 @@
 import { authServer } from '@/lib/auth/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import pino from 'pino'
+
+const logger = pino({name: 'signup-action'});
 
 export async function signup(formData: FormData) {
   // type-casting here for convenience
@@ -15,9 +18,11 @@ export async function signup(formData: FormData) {
   const { error } = await authServer.signUp.email(data);
 
   if (error) {
+    logger.error({error}, 'Error signing up')
     redirect('/error')
   }
 
+  logger.info('User signed up successfully')
   revalidatePath('/', 'layout')
   redirect('/admin')
 }
